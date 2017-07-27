@@ -20,7 +20,7 @@ public class ApplicationRunner {
     }
 
     public void parseFile(URL allZerosSingleEntry) {
-        Main.main(allZerosSingleEntry.toString());
+        Main.main(allZerosSingleEntry.getFile());
     }
 
     public void showsAccountNumber(String accountNumberAsText) throws IOException {
