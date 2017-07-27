@@ -8,7 +8,7 @@ public class BankOcrEndToEndTest {
 
     @Test
     public void parseFileWithSingleAllZerosEntryIntoActualAccountNumber() throws Exception {
-        URL allZerosSingleEntry = BankOcrEndToEndTest.class.getClassLoader().getResource("allZerosSingleEntry");
+        URL allZerosSingleEntry = BankOcrEndToEndTest.class.getClassLoader().getResource("allZerosEntry");
         ApplicationRunner application = new ApplicationRunner();
 
         application.parseFile(allZerosSingleEntry);
@@ -17,7 +17,7 @@ public class BankOcrEndToEndTest {
 
     @Test
     public void parseFileWithSingleAllOnesEntryIntoActualAccountNumber() throws Exception {
-        URL allOnesSingleEntry = BankOcrEndToEndTest.class.getClassLoader().getResource("allOnesSingleEntry");
+        URL allOnesSingleEntry = BankOcrEndToEndTest.class.getClassLoader().getResource("allOnesEntry");
         ApplicationRunner application = new ApplicationRunner();
 
         application.parseFile(allOnesSingleEntry);

@@ -26,4 +26,13 @@ public class ConvertEntryToAccountNumberTest {
                 "  |  |  |  |  |  |  |  |  |");
         assertThat(allZerosEntry.toAccountNumber(), is(equalTo("111111111")));
     }
+
+    @Test
+    public void convertOneToNineEntryToAcountNumber() throws Exception {
+        Entry allDigitEntry = new Entry(
+                "    _  _     _  _  _  _  _ ",
+                "  | _| _||_||_ |_   ||_||_|",
+                "  ||_  _|  | _||_|  ||_| _|");
+        assertThat(allDigitEntry.toAccountNumber(), is(equalTo("123456789")));
+    }
 }

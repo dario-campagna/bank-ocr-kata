@@ -14,7 +14,7 @@ public class ReadEntryFromFileTest {
 
     @Test
     public void readAllZerosEntry() throws Exception {
-        URL allZerosSingleEntry = ReadEntryFromFileTest.class.getClassLoader().getResource("allZerosSingleEntry");
+        URL allZerosSingleEntry = ReadEntryFromFileTest.class.getClassLoader().getResource("allZerosEntry");
         FileEntryReader reader = new FileEntryReader(allZerosSingleEntry.getFile());
         assertThat(reader.readEntry(), is(equalTo(new Entry(
                 " _  _  _  _  _  _  _  _  _ ",
