@@ -1,23 +1,24 @@
 package it.esteco.bankocr.domain;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class AccountNumber {
 
-    private List<Integer> digits;
+    private String chars;
 
-    public AccountNumber(List<Integer> digits) {
-        this.digits = digits;
+    public AccountNumber(String chars) {
+        this.chars = chars;
     }
 
     public boolean isValid() {
-        return checksum(digits) % 11 == 0;
+        return checksum(Arrays.asList(chars.split("(?!^)"))) % 11 == 0;
     }
 
-    private int checksum(List<Integer> digits) {
-        if (digits.isEmpty()) {
+    private int checksum(List<String> chars) {
+        if (chars.isEmpty()) {
             return 0;
         }
-        return digits.get(0) *  digits.size() + checksum(digits.subList(1, digits.size()));
+        return Integer.parseInt(chars.get(0)) *  chars.size() + checksum(chars.subList(1, chars.size()));
     }
 }
