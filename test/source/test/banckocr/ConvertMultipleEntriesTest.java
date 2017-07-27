@@ -1,8 +1,8 @@
 package test.banckocr;
 
-import it.esteco.bankocr.BankOCR;
-import it.esteco.bankocr.Entry;
-import it.esteco.bankocr.EntryReader;
+import it.esteco.bankocr.domain.BankOCR;
+import it.esteco.bankocr.domain.Entry;
+import it.esteco.bankocr.domain.EntryReader;
 import org.junit.Test;
 
 import java.util.Arrays;

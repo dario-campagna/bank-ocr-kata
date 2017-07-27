@@ -1,5 +1,8 @@
 package it.esteco.bankocr;
 
+import it.esteco.bankocr.adapters.FileEntryReader;
+import it.esteco.bankocr.domain.BankOCR;
+
 import java.io.IOException;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package it.esteco.bankocr;
+package it.esteco.bankocr.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;

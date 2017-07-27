@@ -1,7 +1,7 @@
 package test.banckocr;
 
-import it.esteco.bankocr.Entry;
-import it.esteco.bankocr.FileEntryReader;
+import it.esteco.bankocr.domain.Entry;
+import it.esteco.bankocr.adapters.FileEntryReader;
 import org.junit.Test;
 
 import java.net.URL;
