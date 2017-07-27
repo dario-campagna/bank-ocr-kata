@@ -1,9 +1,6 @@
 package it.esteco.bankocr;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 
 public class FileEntryReader implements EntryReader {
     private final BufferedReader bufferedReader;
@@ -15,6 +12,18 @@ public class FileEntryReader implements EntryReader {
 
     @Override
     public Entry readEntry() throws Exception {
-        return new Entry(bufferedReader.readLine(), bufferedReader.readLine(), bufferedReader.readLine());
+        String firstLine = bufferedReader.readLine();
+        if (firstLine != null) {
+            String secondLine = bufferedReader.readLine();
+            String thirdLine = bufferedReader.readLine();
+            skipBlankLine();
+            return new Entry(firstLine, secondLine, thirdLine);
+        } else {
+            return null;
+        }
+    }
+
+    private void skipBlankLine() throws IOException {
+        bufferedReader.readLine();
     }
 }

@@ -28,7 +28,7 @@ public class ConvertEntryToAccountNumberTest {
     }
 
     @Test
-    public void convertOneToNineEntryToAcountNumber() throws Exception {
+    public void convertOneToNineEntryToAccountNumber() throws Exception {
         Entry allDigitEntry = new Entry(
                 "    _  _     _  _  _  _  _ ",
                 "  | _| _||_||_ |_   ||_||_|",

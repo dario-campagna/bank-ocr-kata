@@ -12,6 +12,7 @@ import static org.junit.Assert.assertThat;
 public class ApplicationRunner {
 
     private final ByteArrayOutputStream byteArrayOutputStream;
+    private BufferedReader consoleReader;
     private PrintStream console;
 
     public ApplicationRunner() {
@@ -21,12 +22,15 @@ public class ApplicationRunner {
 
     public void parseFile(URL allZerosSingleEntry) {
         Main.main(allZerosSingleEntry.getFile());
+        consoleReader = createBufferReaderFor(byteArrayOutputStream);
     }
 
     public void showsAccountNumber(String accountNumberAsText) throws IOException {
-        BufferedReader consoleReader = createBufferReaderFor(byteArrayOutputStream);
         assertThat(consoleReader.readLine(), is(equalTo(accountNumberAsText)));
-        resetSystemOut();
+    }
+
+    public void stop() {
+        System.setOut(console);
     }
 
     private void changeSystemOutTo(ByteArrayOutputStream byteArrayOutputStream) {
@@ -37,9 +41,5 @@ public class ApplicationRunner {
     private BufferedReader createBufferReaderFor(ByteArrayOutputStream byteArrayOutputStream) {
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
         return new BufferedReader(new InputStreamReader(byteArrayInputStream));
-    }
-
-    private void resetSystemOut() {
-        System.setOut(console);
     }
 }

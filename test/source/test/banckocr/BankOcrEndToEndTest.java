@@ -13,6 +13,7 @@ public class BankOcrEndToEndTest {
 
         application.parseFile(allZerosSingleEntry);
         application.showsAccountNumber("000000000");
+        application.stop();
     }
 
     @Test
@@ -22,6 +23,19 @@ public class BankOcrEndToEndTest {
 
         application.parseFile(allOnesSingleEntry);
         application.showsAccountNumber("111111111");
+        application.stop();
+    }
+
+    @Test
+    public void parseFileWithMultipleAllZerosEntryIntoActualAccountNumbers() throws Exception {
+        URL allOnesSingleEntry = BankOcrEndToEndTest.class.getClassLoader().getResource("multipleEntries");
+        ApplicationRunner application = new ApplicationRunner();
+
+        application.parseFile(allOnesSingleEntry);
+        application.showsAccountNumber("000000000");
+        application.showsAccountNumber("000000000");
+        application.showsAccountNumber("000000000");
+        application.stop();
     }
 
 }

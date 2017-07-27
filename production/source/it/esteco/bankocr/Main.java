@@ -1,6 +1,7 @@
 package it.esteco.bankocr;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Main {
 
@@ -18,8 +19,8 @@ public class Main {
 
     private void parse(String filePathAsText) {
         try {
-            String accountNumber = bankOCR.parse(new FileEntryReader(filePathAsText));
-            System.out.println(accountNumber);
+            List accountNumbers = bankOCR.parse(new FileEntryReader(filePathAsText));
+            accountNumbers.stream().forEach(accountNumberAsText -> System.out.println(accountNumberAsText));
         } catch (IOException e) {
             e.printStackTrace();
         }
