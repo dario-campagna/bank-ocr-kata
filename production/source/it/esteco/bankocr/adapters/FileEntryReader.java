@@ -4,29 +4,31 @@ import it.esteco.bankocr.domain.Entry;
 import it.esteco.bankocr.domain.EntryReader;
 
 import java.io.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class FileEntryReader implements EntryReader {
-    private final BufferedReader bufferedReader;
 
-    public FileEntryReader(String filePathAsText) throws FileNotFoundException {
+    private final List<String> lines;
+
+    public FileEntryReader(String filePathAsText) throws IOException {
         FileReader fileReader = new FileReader(new File(filePathAsText));
-        bufferedReader = new BufferedReader(fileReader);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        lines = bufferedReader.lines().filter(line -> !line.isEmpty()).collect(Collectors.toList());
+        bufferedReader.close();
     }
 
     @Override
-    public Entry readEntry() throws Exception {
-        String firstLine = bufferedReader.readLine();
-        if (firstLine != null) {
-            String secondLine = bufferedReader.readLine();
-            String thirdLine = bufferedReader.readLine();
-            skipBlankLine();
-            return new Entry(firstLine, secondLine, thirdLine);
-        } else {
+    public Entry readEntry() {
+        if (noEntries()) {
             return null;
+        } else {
+            return new Entry(lines.remove(0), lines.remove(0), lines.remove(0));
         }
     }
 
-    private void skipBlankLine() throws IOException {
-        bufferedReader.readLine();
+    private boolean noEntries() {
+        return lines.isEmpty();
     }
+
 }
