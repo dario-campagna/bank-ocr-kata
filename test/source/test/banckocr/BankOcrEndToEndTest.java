@@ -22,7 +22,7 @@ public class BankOcrEndToEndTest {
         ApplicationRunner application = new ApplicationRunner();
 
         application.parseFile(allOnesSingleEntry);
-        application.showsAccountNumber("111111111");
+        application.showsAccountNumber("111111111 ERR");
         application.stop();
     }
 
@@ -32,9 +32,9 @@ public class BankOcrEndToEndTest {
         ApplicationRunner application = new ApplicationRunner();
 
         application.parseFile(allOnesSingleEntry);
-        application.showsAccountNumber("000000000");
-        application.showsAccountNumber("000000000");
-        application.showsAccountNumber("000000000");
+        application.showsAccountNumber("457508000");
+        application.showsAccountNumber("664371495 ERR");
+        application.showsAccountNumber("86110??36 ILL");
         application.stop();
     }
 

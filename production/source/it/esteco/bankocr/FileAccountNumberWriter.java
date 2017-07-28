@@ -1,5 +1,8 @@
 package it.esteco.bankocr;
 
+import it.esteco.bankocr.domain.AccountNumber;
+import it.esteco.bankocr.domain.AccountNumberFormatter;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
@@ -7,15 +10,17 @@ import java.util.List;
 public class FileAccountNumberWriter {
 
     private final FileWriter fileWriter;
+    private AccountNumberFormatter formatter;
 
-    public FileAccountNumberWriter(String file) throws IOException {
+    public FileAccountNumberWriter(String file, AccountNumberFormatter formatter) throws IOException {
         fileWriter = new FileWriter(file);
+        this.formatter = formatter;
     }
 
-    public void writeAll(List<String> accountNumbers) throws IOException {
-        accountNumbers.stream().forEach(accountNumberAsText -> {
+    public void writeAll(List<AccountNumber> accountNumbers) throws IOException {
+        accountNumbers.stream().forEach(accountNumber -> {
             try {
-                fileWriter.write(accountNumberAsText + "\n");
+                fileWriter.write(formatter.format(accountNumber) + "\n");
             } catch (IOException e) {
                 e.printStackTrace();
             }

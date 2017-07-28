@@ -1,5 +1,6 @@
 package test.banckocr;
 
+import it.esteco.bankocr.domain.AccountNumber;
 import it.esteco.bankocr.domain.BankOCR;
 import it.esteco.bankocr.domain.Entry;
 import it.esteco.bankocr.domain.EntryReader;
@@ -25,11 +26,22 @@ public class ConvertMultipleEntriesTest {
         when(reader.readEntry())
                 .thenReturn(allFoursEntry())
                 .thenReturn(allSixEntry())
+                .thenReturn(illegibleEntry())
                 .thenReturn(null);
 
-        List accountNumbers = bankOCR.parse(reader);
+        List<AccountNumber> accountNumbers = bankOCR.parse(reader);
 
-        assertThat(accountNumbers, is(equalTo(Arrays.asList("444444444", "666666666"))));
+        assertThat(accountNumbers, is(equalTo(Arrays.asList(
+                new AccountNumber("444444444"),
+                new AccountNumber("666666666"),
+                new AccountNumber("44?44?444")))));
+    }
+
+    private Entry illegibleEntry() {
+        return new Entry(
+                "                           ",
+                "|_||_|| ||_||_||_||_||_||_|",
+                "  |  |  |  |  |     |  |  |");
     }
 
     private Entry allFoursEntry() {

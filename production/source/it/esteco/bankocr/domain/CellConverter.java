@@ -66,7 +66,7 @@ public class CellConverter {
             case NINE_CELL:
                 return "9";
         }
-        return "";
+        return "?";
     }
 
 }

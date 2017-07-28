@@ -1,6 +1,8 @@
 package it.esteco.bankocr;
 
 import it.esteco.bankocr.adapters.FileEntryReader;
+import it.esteco.bankocr.domain.AccountNumber;
+import it.esteco.bankocr.domain.AccountNumberFormatter;
 import it.esteco.bankocr.domain.BankOCR;
 
 import java.io.IOException;
@@ -23,8 +25,8 @@ public class Main {
 
     private void convert(String inputFilePathAsText, String outputFilePathAsText) {
         try {
-            List<String> accountNumbers = bankOCR.parse(new FileEntryReader(inputFilePathAsText));
-            FileAccountNumberWriter accountNumberWriter = new FileAccountNumberWriter(outputFilePathAsText);
+            List<AccountNumber> accountNumbers = bankOCR.parse(new FileEntryReader(inputFilePathAsText));
+            FileAccountNumberWriter accountNumberWriter = new FileAccountNumberWriter(outputFilePathAsText, new AccountNumberFormatter());
             accountNumberWriter.writeAll(accountNumbers);
         } catch (IOException e) {
             e.printStackTrace();

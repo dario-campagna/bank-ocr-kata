@@ -5,9 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class BankOCR {
-    public List<String> parse(EntryReader reader) {
+    public List<AccountNumber> parse(EntryReader reader) {
         try {
-            List<String> accountNumbers = new ArrayList<>();
+            List<AccountNumber> accountNumbers = new ArrayList<>();
             Entry entry = reader.readEntry();
             while (entry != null) {
                 accountNumbers.add(entry.toAccountNumber());

@@ -12,8 +12,8 @@ public class Entry {
         this.thirdLine = thirdLine;
     }
 
-    public String toAccountNumber() {
-        return convert(firstLine, secondLine, thirdLine);
+    public AccountNumber toAccountNumber() {
+        return new AccountNumber(convert(firstLine, secondLine, thirdLine));
     }
 
     private String convert(String firstLine, String secondLine, String thirdLine) {
