@@ -11,8 +11,17 @@ public class AccountNumber {
         this.chars = chars;
     }
 
+    public boolean isIllegible() {
+        return chars.contains("?");
+    }
+
     public boolean isValid() {
-        return checksum(Arrays.asList(chars.split("(?!^)"))) % 11 == 0;
+        return !isIllegible() && checksum(Arrays.asList(chars.split("(?!^)"))) % 11 == 0;
+    }
+
+    @Override
+    public String toString() {
+        return chars;
     }
 
     private int checksum(List<String> chars) {
