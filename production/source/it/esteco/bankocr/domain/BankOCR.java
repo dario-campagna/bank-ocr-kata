@@ -8,7 +8,7 @@ public class BankOCR {
         List<AccountNumber> accountNumbers = new ArrayList<>();
         Entry entry = reader.readEntry();
         while (entry != null) {
-            accountNumbers.add(entry.toAccountNumber());
+            accountNumbers.add(new AccountNumber(entry.asText()));
             entry = reader.readEntry();
         }
         return accountNumbers;

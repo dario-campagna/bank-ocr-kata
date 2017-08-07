@@ -15,7 +15,7 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class ConvertMultipleEntriesTest {
+public class ConvertMultipleEntriesToAccountNumbersTest {
 
     private BankOCR bankOCR = new BankOCR();
     private EntryReader reader = mock(EntryReader.class);

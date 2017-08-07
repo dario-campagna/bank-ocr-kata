@@ -1,36 +1,33 @@
 package it.esteco.bankocr.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Entry {
 
-    private final String firstLine;
-    private final String secondLine;
-    private final String thirdLine;
+    private final List<Cell> cells;
 
     public Entry(String firstLine, String secondLine, String thirdLine) {
-        this.firstLine = firstLine;
-        this.secondLine = secondLine;
-        this.thirdLine = thirdLine;
+        cells = toCells(firstLine, secondLine, thirdLine);
     }
 
-    public AccountNumber toAccountNumber() {
-        return new AccountNumber(convert(firstLine, secondLine, thirdLine));
-    }
-
-    private String convert(String firstLine, String secondLine, String thirdLine) {
+    private List<Cell> toCells(String firstLine, String secondLine, String thirdLine) {
+        List<Cell> cells = new ArrayList<>();
         if (firstLine.isEmpty()) {
-            return "";
+            return cells;
         } else {
-            String cell = firstLine.substring(0, 3) + secondLine.substring(0, 3) + thirdLine.substring(0, 3);
-            return CellConverter.toDigit(cell) + convert(firstLine.substring(3), secondLine.substring(3), thirdLine.substring(3));
+            cells.add(new Cell(firstLine.substring(0, 3) + secondLine.substring(0, 3) + thirdLine.substring(0, 3)));
+            cells.addAll(toCells(firstLine.substring(3), secondLine.substring(3), thirdLine.substring(3)));
+            return cells;
         }
     }
 
-    @Override
-    public String toString() {
-        return '\n' +
-                firstLine + '\n' +
-                secondLine + '\n' +
-                thirdLine + '\n';
+    public String asText() {
+        String text = "";
+        for (Cell cell : cells) {
+            text += cell.asText();
+        }
+        return text;
     }
 
     @Override
@@ -40,16 +37,11 @@ public class Entry {
 
         Entry entry = (Entry) o;
 
-        if (!firstLine.equals(entry.firstLine)) return false;
-        if (!secondLine.equals(entry.secondLine)) return false;
-        return thirdLine.equals(entry.thirdLine);
+        return cells.equals(entry.cells);
     }
 
     @Override
     public int hashCode() {
-        int result = firstLine.hashCode();
-        result = 31 * result + secondLine.hashCode();
-        result = 31 * result + thirdLine.hashCode();
-        return result;
+        return cells.hashCode();
     }
 }
