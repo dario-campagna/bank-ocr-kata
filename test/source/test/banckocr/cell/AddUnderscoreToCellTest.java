@@ -18,7 +18,7 @@ public class AddUnderscoreToCellTest {
         assertThat(new Cell(
                 " _ " +
                 "| |" +
-                "|_|").addMiddleUnderscore(), is(equalTo(new Cell(Cell.EIGHT_CELL_AS_STRING))));
+                "|_|").addCenterUnderscore(), is(equalTo(new Cell(Cell.EIGHT_CELL_AS_STRING))));
         assertThat(new Cell(
                 " _ " +
                 "|_|" +

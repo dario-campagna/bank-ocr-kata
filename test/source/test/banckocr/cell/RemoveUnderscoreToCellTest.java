@@ -15,7 +15,7 @@ public class RemoveUnderscoreToCellTest {
                 "   " +
                 "|_|" +
                 "|_|"))));
-        assertThat(new Cell(Cell.EIGHT_CELL_AS_STRING).removeMiddleUnderscore(), is(equalTo(new Cell(
+        assertThat(new Cell(Cell.EIGHT_CELL_AS_STRING).removeCenterUnderscore(), is(equalTo(new Cell(
                 " _ " +
                 "| |" +
                 "|_|"))));
