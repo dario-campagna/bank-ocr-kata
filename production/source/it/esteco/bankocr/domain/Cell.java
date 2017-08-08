@@ -77,6 +77,18 @@ public class Cell {
         return new Cell(cellAsString.substring(0,7) + "_" + cellAsString.substring(8));
     }
 
+    public Cell removeTopUnderscore() {
+        return new Cell(cellAsString.substring(0,1) + " " + cellAsString.substring(2));
+    }
+
+    public Cell removeMiddleUnderscore() {
+        return new Cell(cellAsString.substring(0,4) + " " + cellAsString.substring(5));
+    }
+
+    public Cell removeBottomUnderscore() {
+        return new Cell(cellAsString.substring(0,7) + " " + cellAsString.substring(8));
+    }
+
     public String asText() {
         switch (cellAsString) {
             case ZERO_CELL_AS_STRING:
@@ -101,6 +113,10 @@ public class Cell {
                 return "9";
         }
         return "?";
+    }
+
+    public boolean isValid() {
+        return !"?".equals(asText());
     }
 
     @Override

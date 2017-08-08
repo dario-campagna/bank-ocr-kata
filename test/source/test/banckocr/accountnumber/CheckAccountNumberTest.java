@@ -1,4 +1,4 @@
-package test.banckocr;
+package test.banckocr.accountnumber;
 
 import it.esteco.bankocr.domain.AccountNumber;
 import org.junit.Test;

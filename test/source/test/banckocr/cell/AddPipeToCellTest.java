@@ -1,4 +1,4 @@
-package test.banckocr;
+package test.banckocr.cell;
 
 import it.esteco.bankocr.domain.Cell;
 import org.junit.Test;
