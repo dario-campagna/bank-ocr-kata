@@ -2,43 +2,43 @@ package it.esteco.bankocr.domain;
 
 public class Cell {
 
-    private static final String ZERO_CELL =
+    public static final String ZERO_CELL_AS_STRING =
             " _ " +
             "| |" +
             "|_|";
-    private static final String ONE_CELL =
+    public static final String ONE_CELL_AS_STRING =
             "   " +
             "  |" +
             "  |";
-    private static final String TWO_CELL =
+    public static final String TWO_CELL_AS_STRING =
             " _ " +
             " _|" +
             "|_ ";
-    private static final String THREE_CELL =
+    public static final String THREE_CELL_AS_STRING =
             " _ " +
             " _|" +
             " _|";
-    private static final String FOUR_CELL =
+    public static final String FOUR_CELL_AS_STRING =
             "   " +
             "|_|" +
             "  |";
-    private static final String FIVE_CELL =
+    public static final String FIVE_CELL_AS_STRING =
             " _ " +
             "|_ " +
             " _|";
-    private static final String SIX_CELL =
+    public static final String SIX_CELL_AS_STRING =
             " _ " +
             "|_ " +
             "|_|";
-    private static final String SEVEN_CELL =
+    public static final String SEVEN_CELL_AS_STRING =
             " _ " +
             "  |" +
             "  |";
-    private static final String EIGHT_CELL =
+    public static final String EIGHT_CELL_AS_STRING =
             " _ " +
             "|_|" +
             "|_|";
-    private static final String NINE_CELL =
+    public static final String NINE_CELL_AS_STRING =
             " _ " +
             "|_|" +
             " _|";
@@ -49,30 +49,63 @@ public class Cell {
         this.cellAsString = cellAsString;
     }
 
+    public Cell addTopLeftPipe() {
+        return new Cell(cellAsString.substring(0, 3) + "|" + cellAsString.substring(4));
+    }
+
+    public Cell addTopRightPipe() {
+        return new Cell(cellAsString.substring(0, 5) + "|" + cellAsString.substring(6));
+    }
+
+    public Cell addBottomLeftPipe() {
+        return new Cell(cellAsString.substring(0, 6) + "|" + cellAsString.substring(7));
+    }
+
+    public Cell addBottomRightPipe() {
+        return new Cell(cellAsString.substring(0, 8) + "|");
+    }
+
+    public Cell addTopUnderscore() {
+        return new Cell(cellAsString.substring(0,1) + "_" + cellAsString.substring(2));
+    }
+
+    public Cell addMiddleUnderscore() {
+        return new Cell(cellAsString.substring(0,4) + "_" + cellAsString.substring(5));
+    }
+
+    public Cell addBottomUnderscore() {
+        return new Cell(cellAsString.substring(0,7) + "_" + cellAsString.substring(8));
+    }
+
     public String asText() {
         switch (cellAsString) {
-            case ZERO_CELL:
+            case ZERO_CELL_AS_STRING:
                 return "0";
-            case ONE_CELL:
+            case ONE_CELL_AS_STRING:
                 return "1";
-            case TWO_CELL:
+            case TWO_CELL_AS_STRING:
                 return "2";
-            case THREE_CELL:
+            case THREE_CELL_AS_STRING:
                 return "3";
-            case FOUR_CELL:
+            case FOUR_CELL_AS_STRING:
                 return "4";
-            case FIVE_CELL:
+            case FIVE_CELL_AS_STRING:
                 return "5";
-            case SIX_CELL:
+            case SIX_CELL_AS_STRING:
                 return "6";
-            case SEVEN_CELL:
+            case SEVEN_CELL_AS_STRING:
                 return "7";
-            case EIGHT_CELL:
+            case EIGHT_CELL_AS_STRING:
                 return "8";
-            case NINE_CELL:
+            case NINE_CELL_AS_STRING:
                 return "9";
         }
         return "?";
+    }
+
+    @Override
+    public String toString() {
+        return "\n" + cellAsString.substring(0,3) + "\n" + cellAsString.substring(3,6) + "\n" + cellAsString.substring(6);
     }
 
     @Override
@@ -89,4 +122,5 @@ public class Cell {
     public int hashCode() {
         return cellAsString.hashCode();
     }
+
 }
