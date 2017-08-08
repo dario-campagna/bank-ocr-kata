@@ -1,11 +1,10 @@
 package it.esteco.bankocr;
 
 import it.esteco.bankocr.adapters.FileEntryReader;
-import it.esteco.bankocr.domain.AccountNumber;
-import it.esteco.bankocr.domain.AccountNumberFormatter;
-import it.esteco.bankocr.domain.BankOCR;
+import it.esteco.bankocr.domain.*;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -15,7 +14,7 @@ public class Main {
     private BankOCR bankOCR;
 
     public Main() {
-        bankOCR = new BankOCR();
+        bankOCR = new BankOCR(new AccountNumberFixer(Arrays.asList(new PipeCellFixer(), new UnderscoreCellFixer())));
     }
 
     public static void main(String... args) {

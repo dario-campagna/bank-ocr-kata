@@ -60,4 +60,12 @@ public class FixAccountNumberTest {
                 " _| _| _||_||_ |_   ||_||_|",
                 "  ||_  _|  | _||_|  ||_| _|")), is(equalTo(new AccountNumber("123456789"))));
     }
+
+    @Test
+    public void notFixableIllegibleAccountNumber() throws Exception {
+        assertThat(new AccountNumberFixer(fixers).fix(new Entry(
+                "    _  _     _  _  _  _  _ ",
+                "  | _| _||_| _ |_   ||_||_|",
+                "  ||_  _|  | _||_|  ||_| _ ")), is(equalTo(new AccountNumber("1234?678?"))));
+    }
 }

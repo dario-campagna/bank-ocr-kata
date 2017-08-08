@@ -29,11 +29,12 @@ public class AccountNumberFormatter {
     }
 
     private String formatOptions(List<AccountNumber> options) {
-        String optionsAsText = " ['" + options.get(0).asText() + "'";
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(" ['" + options.get(0).asText() + "'");
         for (AccountNumber number : options.subList(1, options.size())) {
-            optionsAsText += ", '" + number.asText() + "'";
+            stringBuilder.append(", '" + number.asText() + "'");
         }
-        optionsAsText += "]";
-        return optionsAsText;
+        stringBuilder.append("]");
+        return stringBuilder.toString();
     }
 }

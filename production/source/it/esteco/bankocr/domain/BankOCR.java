@@ -4,13 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BankOCR {
+
+    private AccountNumberFixer fixer;
+
+    public BankOCR(AccountNumberFixer fixer) {
+        this.fixer = fixer;
+    }
+
     public List<AccountNumber> parse(EntryReader reader) {
         List<AccountNumber> accountNumbers = new ArrayList<>();
         Entry entry = reader.readEntry();
         while (entry != null) {
-            accountNumbers.add(new AccountNumber(entry.asText()));
+            accountNumbers.add(entryToAccountNumber(entry));
             entry = reader.readEntry();
         }
         return accountNumbers;
+    }
+
+    private AccountNumber entryToAccountNumber(Entry entry) {
+        AccountNumber accountNumber = new AccountNumber(entry.asText());
+        if (accountNumber.isValid()) {
+            return accountNumber;
+        } else {
+            return fixer.fix(entry);
+        }
     }
 }

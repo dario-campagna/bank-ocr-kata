@@ -13,16 +13,17 @@ public class AccountNumberFixer {
     }
 
     public AccountNumber fix(Entry entryToFix) {
-        List<AccountNumber> numbers = generateAccountNumbers(entryToFix);
-        List<AccountNumber> validNumbers = numbers.stream().filter(AccountNumber::isValid).collect(Collectors.toList());
-        if (validNumbers.size() == 1) {
+        List<AccountNumber> validNumbers = generateValidAccountNumbersFrom(entryToFix);
+        if (noValidNumberFound(validNumbers)) {
+            return new AccountNumber(entryToFix.asText());
+        } else if (exactlyOneValidNumberFound(validNumbers)) {
             return validNumbers.get(0);
         } else {
             return new AccountNumber(entryToFix.asText(), validNumbers);
         }
     }
 
-    private List<AccountNumber> generateAccountNumbers(Entry entryToFix) {
+    private List<AccountNumber> generateValidAccountNumbersFrom(Entry entryToFix) {
         List<AccountNumber> numbers = new ArrayList<>();
         for (CellFixer fixer : fixers) {
             List<Entry> entries = entryToFix.fixWith(fixer);
@@ -30,6 +31,14 @@ public class AccountNumberFixer {
                 numbers.add(new AccountNumber(entry.asText()));
             }
         }
-        return numbers;
+        return numbers.stream().filter(AccountNumber::isValid).collect(Collectors.toList());
+    }
+
+    private boolean exactlyOneValidNumberFound(List<AccountNumber> validNumbers) {
+        return validNumbers.size() == 1;
+    }
+
+    private boolean noValidNumberFound(List<AccountNumber> validNumbers) {
+        return validNumbers.isEmpty();
     }
 }
