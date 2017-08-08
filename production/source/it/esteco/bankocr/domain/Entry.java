@@ -11,6 +11,10 @@ public class Entry {
         cells = toCells(firstLine, secondLine, thirdLine);
     }
 
+    private Entry(List<Cell> cells) {
+        this.cells = cells;
+    }
+
     private List<Cell> toCells(String firstLine, String secondLine, String thirdLine) {
         List<Cell> cells = new ArrayList<>();
         if (firstLine.isEmpty()) {
@@ -28,6 +32,23 @@ public class Entry {
             text += cell.asText();
         }
         return text;
+    }
+
+    public List<Entry> fixWith(CellFixer cellFixer) {
+        List<Entry> newEntries = new ArrayList<>();
+        for (int i = 0; i < cells.size(); i++) {
+            for (Cell fixedCell : cellFixer.fix(cells.get(i))) {
+                List<Cell> newCells = new ArrayList<>(cells);
+                newCells.set(i, fixedCell);
+                newEntries.add(new Entry(newCells));
+            }
+        }
+        return newEntries;
+    }
+
+    @Override
+    public String toString() {
+        return cells.toString();
     }
 
     @Override

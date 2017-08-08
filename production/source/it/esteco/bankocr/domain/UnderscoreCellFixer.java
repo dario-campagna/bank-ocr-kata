@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class UnderscoreCellFixer {
+public class UnderscoreCellFixer implements CellFixer {
+    @Override
     public List<Cell> fix(Cell cell) {
         List<Cell> cells = new ArrayList<>();
         cells.add(cell.addTopUnderscore());
