@@ -1,6 +1,12 @@
 package test.banckocr.accountnumber;
 
 import it.esteco.bankocr.domain.*;
+import it.esteco.bankocr.domain.accountnumber.AccountNumber;
+import it.esteco.bankocr.domain.accountnumber.AccountNumberFixer;
+import it.esteco.bankocr.domain.cell.PipeCellFixer;
+import it.esteco.bankocr.domain.cell.UnderscoreCellFixer;
+import it.esteco.bankocr.domain.entry.Entry;
+import it.esteco.bankocr.domain.entry.EntryReader;
 import org.junit.Test;
 
 import java.util.Arrays;

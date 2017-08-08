@@ -1,4 +1,4 @@
-package it.esteco.bankocr.domain;
+package it.esteco.bankocr.domain.accountnumber;
 
 import java.util.Arrays;
 import java.util.List;

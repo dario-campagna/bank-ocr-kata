@@ -1,7 +1,7 @@
 package test.banckocr.accountnumber;
 
-import it.esteco.bankocr.domain.AccountNumber;
-import it.esteco.bankocr.domain.AccountNumberFormatter;
+import it.esteco.bankocr.domain.accountnumber.AccountNumber;
+import it.esteco.bankocr.domain.accountnumber.AccountNumberFormatter;
 import org.junit.Test;
 
 import java.util.Arrays;

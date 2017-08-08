@@ -1,6 +1,6 @@
 package test.banckocr;
 
-import it.esteco.bankocr.domain.Entry;
+import it.esteco.bankocr.domain.entry.Entry;
 import it.esteco.bankocr.adapters.FileEntryReader;
 import org.junit.Test;
 

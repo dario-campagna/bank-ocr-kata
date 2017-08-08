@@ -1,4 +1,7 @@
-package it.esteco.bankocr.domain;
+package it.esteco.bankocr.domain.entry;
+
+import it.esteco.bankocr.domain.cell.Cell;
+import it.esteco.bankocr.domain.cell.CellFixer;
 
 import java.util.ArrayList;
 import java.util.List;

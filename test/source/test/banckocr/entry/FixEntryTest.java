@@ -1,8 +1,8 @@
 package test.banckocr.entry;
 
-import it.esteco.bankocr.domain.Entry;
-import it.esteco.bankocr.domain.PipeCellFixer;
-import it.esteco.bankocr.domain.UnderscoreCellFixer;
+import it.esteco.bankocr.domain.entry.Entry;
+import it.esteco.bankocr.domain.cell.PipeCellFixer;
+import it.esteco.bankocr.domain.cell.UnderscoreCellFixer;
 import org.junit.Test;
 
 import java.util.Arrays;

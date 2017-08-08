@@ -1,7 +1,7 @@
 package test.banckocr.cell;
 
-import it.esteco.bankocr.domain.Cell;
-import it.esteco.bankocr.domain.UnderscoreCellFixer;
+import it.esteco.bankocr.domain.cell.Cell;
+import it.esteco.bankocr.domain.cell.UnderscoreCellFixer;
 import org.junit.Test;
 
 import java.util.Arrays;

@@ -1,7 +1,7 @@
 package it.esteco.bankocr.adapters;
 
-import it.esteco.bankocr.domain.Entry;
-import it.esteco.bankocr.domain.EntryReader;
+import it.esteco.bankocr.domain.entry.Entry;
+import it.esteco.bankocr.domain.entry.EntryReader;
 
 import java.io.*;
 import java.util.List;

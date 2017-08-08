@@ -1,5 +1,10 @@
 package it.esteco.bankocr.domain;
 
+import it.esteco.bankocr.domain.accountnumber.AccountNumber;
+import it.esteco.bankocr.domain.accountnumber.AccountNumberFixer;
+import it.esteco.bankocr.domain.entry.Entry;
+import it.esteco.bankocr.domain.entry.EntryReader;
+
 import java.util.ArrayList;
 import java.util.List;
 

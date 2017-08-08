@@ -1,6 +1,6 @@
 package test.banckocr.entry;
 
-import it.esteco.bankocr.domain.Entry;
+import it.esteco.bankocr.domain.entry.Entry;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;

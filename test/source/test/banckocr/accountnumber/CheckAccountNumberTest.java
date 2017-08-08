@@ -1,6 +1,6 @@
 package test.banckocr.accountnumber;
 
-import it.esteco.bankocr.domain.AccountNumber;
+import it.esteco.bankocr.domain.accountnumber.AccountNumber;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

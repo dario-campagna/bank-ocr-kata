@@ -2,6 +2,11 @@ package it.esteco.bankocr;
 
 import it.esteco.bankocr.adapters.FileEntryReader;
 import it.esteco.bankocr.domain.*;
+import it.esteco.bankocr.domain.accountnumber.AccountNumber;
+import it.esteco.bankocr.domain.accountnumber.AccountNumberFixer;
+import it.esteco.bankocr.domain.accountnumber.AccountNumberFormatter;
+import it.esteco.bankocr.domain.cell.PipeCellFixer;
+import it.esteco.bankocr.domain.cell.UnderscoreCellFixer;
 
 import java.io.IOException;
 import java.util.Arrays;

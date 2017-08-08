@@ -1,4 +1,4 @@
-package it.esteco.bankocr.domain;
+package it.esteco.bankocr.domain.cell;
 
 public class Cell {
 
